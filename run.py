@@ -31,45 +31,29 @@ def main():
             else:
                 print(f"{created_user_name}, Account created successfully!")
                 print('\n')
-                print('proceed to login')
-                print('Username:')
-                entered_username =input()
-                print('Enter your password')
-                entered_password = input()
-
-            while entered_username !=created_user_name or entered_password!=created_user_password:
-                print("Invalid username or password")
-                print("Username")
-                entered_username = input()
-                print("Enter your pasword")
-                entered_password = input()
-
-            else:
-                print(f"{entered_username},welcome to your account")
-                print('\n')
-
 
         elif short_code =='lg':
-            print("Welcome")
+            print("Hello!")
             print('Enter username')
             default_user_name =input()
 
             print('Enter your Password')
             default_user_password =input()
             print('\n')
-            while default_user_name != 'testUser' or default_user_password != '09876':
-                print("Wrong username or password.username 'testuser' and password '09876'")
-                print("Enter user name")
-                default_user_name =input()
 
-                print("Enter password")
+
+            while default_user_name !=created_user_name or default_user_password!=created_user_password:
+                print("Invalid username or password")
+                print("Username")
+                default_user_name = input()
+                print("Enter your pasword")
                 default_user_password = input()
-                print('\n')
 
             else:
-                print("Login success")
+                print(f"{default_user_name},welcome to your account")
                 print('\n')
-                print('\n')
+
+            
 
         elif short_code == 'ex':
             break
