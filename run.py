@@ -71,20 +71,10 @@ def main():
                 print('\n')
                 print('\n')
 
-        
-
-
-            
-
-
-
-
-
-
-
-
-
-
+        elif short_code == 'ex':
+            break
+        else:
+            print("Enter valid code to continue")
 
 if __name__ == '__main__':
     main()
