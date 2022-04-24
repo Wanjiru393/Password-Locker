@@ -1,5 +1,5 @@
 import random
-from user import User
+from user import user_list
 
 
 def main():
