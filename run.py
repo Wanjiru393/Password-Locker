@@ -1,4 +1,4 @@
-import random
+from password_generator import PasswordGenerator
 from user import *
 from user import User,Credentials
 
@@ -106,7 +106,12 @@ def main():
 
                     break
                 elif password_Choice == 'gp':
-                    password = generate_Password()
+                    pwo=PasswordGenerator()
+                    pwo.minlen=4
+                    pwo.maxlen=6
+
+                    for i in range(1):
+                        print(pwo.generate())
                     break
                 else:
                     print("Invalid password!Try again")
@@ -157,7 +162,12 @@ def main():
                     password = input("Enter Your Own Password\n")
                     break
                 elif password_Choice == 'gp':
-                    password = generate_Password()
+                    pwo=PasswordGenerator()
+                    pwo.minlen=4
+                    pwo.maxlen=6
+
+                    for i in range(1):
+                        print(pwo.generate())
                     break
                 else:
                     print("Invalid password please try again")
@@ -168,10 +178,10 @@ def main():
         elif short_code == "dc":
             if display_accounts_details():
                 print("Accounts available: ")
-                print('*'* 15)
+                print('-'* 15)
                 for account in display_accounts_details():
                     print(f" Account:{account.account} \n User Name:{username}\n Password:{password}")
-                print('*' * 30)
+                print('-' * 15)
             else:
                 print("You don't have any credentials saved yet..")
         elif short_code == "fc":
@@ -200,8 +210,12 @@ def main():
                 print("That Credential you want to delete does not exist in your store yet")
 
         elif short_code == 'gp':
+            pwo=PasswordGenerator()
+            pwo.minlen=4
+            pwo.maxlen=6
 
-            password = generate_Password()
+            for i in range(1):
+                print(pwo.generate())
             print(f" {password} Has been generated succesfull. You can proceed to use it to your account")
         elif short_code == 'ex':
             print("Thanks for using passwords store manager.. See you next time!")
