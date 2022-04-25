@@ -11,7 +11,7 @@ def create_new_user(username,password):
     new_user = User(user_name,password)
     return new_user
 
-def save_user():
+def save_user(user):
     '''
     Function to save a new user
     '''
@@ -83,10 +83,11 @@ def main():
     short_code=input("").lower().strip()
     if short_code =='ca':
             print('\n')
-            print('Create New Account')
+            print('Enter Username:')
+            print('-'* 15)
             created_user_name =input()
             while True:
-                print("\n tp - To type your own pasword,gp - To generate random Password")
+                print("\n tp - To type your own pasword \n gp - To generate random Password")
                 password_Choice = input().lower().strip()
                 if password_Choice == 'tp':
                     print('\n')
@@ -97,6 +98,7 @@ def main():
                     confirm_password =input()
                     while confirm_password !=created_user_password:
                         print('Invalid! Password does not match')
+                        print('*'* 15)
                         print('Enter your password')
                         created_user_password = input()
                         print('confirm password')
@@ -105,24 +107,18 @@ def main():
                         print(f"{created_user_name}, Account created successfully!")
                         print('\n')
 
-                    break
+                        break
                 elif password_Choice == 'gp':
                     pwo=PasswordGenerator()
                     pwo.minlen=4
                     pwo.maxlen=6
+                    print('\n')
+                    pword1 = pwo.generate()
+                    print('*'* 15)
+                    print(pword1)
+                    print(f"Hello {created_user_name}, Your account has been created succesfully!\n Your password is: {pword1}")
 
-                    for i in range(1):
-                        print(pwo.generate())
-                        save_user(created_user_name)
-                        print(f"Hello {created_user_name}, Your account has been created succesfully! Your password is: {pwo.generate()}")
-
-        #Need to pick generated password in line 117
-        
-                else:
-                    # print("Invalid password!Try again")
-                    save_user(created_user_name,created_user_password)
-                    print(f"Hello {created_user_name}, Your account has been created succesfully! Your password is: {password}")
-                    # print("_"*15)
+                    break
     elif short_code =='lg':
             print("Hello!")
             print('Enter username')
@@ -132,6 +128,7 @@ def main():
             default_user_password =input()
             print('\n')
             while default_user_name !=created_user_name or default_user_password!=created_user_password:
+                print('*'* 15)
                 print("Invalid username or password")
                 print("Username")
                 default_user_name = input()
@@ -143,18 +140,19 @@ def main():
                 print('\n')
 
     while True:
-        print("Choose a short code to continue:\n cc - Create a new credential \n dc - Display Credentials \n fc - Find a credential \n gp - Generate A randomn password \n d - Delete credential \n ex - Exit the application \n")
+        print("\n Choose a short code to continue:\n cc - Create a new credential \n dc - Display Credentials \n fc - Find a credential \n gp - Generate A randomn password \n d - Delete credential \n ex - Exit the application \n")
         short_code = input().lower().strip()
         if short_code == "cc":
             print("Create New Credential")
             print('\n')
+            print('*'* 15)
             print("Account name:")
             account = input().lower()
             print("Your Account username")
             userName = input()
             print("\n")
             while True:
-                print(" tp - To type your own pasword if you already have an account, gp, To generate random Password")
+                print(" tp - To type your own pasword if you already have an account \n gp - To generate random Password")
                 password_Choice = input().lower().strip()
                 if password_Choice == 'tp':
                     print('\n')
@@ -164,20 +162,23 @@ def main():
                     pwo=PasswordGenerator()
                     pwo.minlen=4
                     pwo.maxlen=6
-
-                    for i in range(1):
-                        print(pwo.generate())
+                    pword =pwo.generate()
+                    print('*'* 15)
+                    print(pword)
+                     
                     break
+                    
                 else:
-                    print("Invalid password please try again")
+                    print("Invalid shortcode please try again")
+                print('\n')
             save_credentials(create_new_credential(account,userName,password))
-            print('\n')
+
             print(f"Account Credential for: {account} created successfully. \n UserName: {userName} Password:{password}")
             print('\n')
         elif short_code == "dc":
             if display_accounts_details():
                 print("Accounts available: ")
-                print('-'* 15)
+                print('*'* 15)
                 for account in display_accounts_details():
                     print(f" Account:{account.account} \n User Name:{userName}\n Password:{password}")
                 print('-' * 15)
@@ -212,12 +213,13 @@ def main():
             pwo=PasswordGenerator()
             pwo.minlen=4
             pwo.maxlen=6
+            pword2= pwo.generate()
 
             for i in range(1):
-                print(pwo.generate())
+                print(pword2)
                 print('\n')
             #Need to correct password,to pick generated password.
-            print(f" {password} Has been generated succesfull.")
+            print(f"Generated succesfull.")
             print('\n')
         elif short_code == 'ex':
             print("Thanks for using password locker...Adios!")
