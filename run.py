@@ -77,14 +77,6 @@ def copy_password(account):
     """
     return Credentials.copy_password(account)
 
-
-
-
-
-
-
-
-
 def main():
 
     while True:
@@ -123,8 +115,6 @@ def main():
             print('Enter your Password')
             default_user_password =input()
             print('\n')
-
-
             while default_user_name !=created_user_name or default_user_password!=created_user_password:
                 print("Invalid username or password")
                 print("Username")
